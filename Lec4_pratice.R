@@ -42,7 +42,7 @@ barplot(stat_dhyp, names=0:5)
 # 3. phyper() 함수를 이용하여 누적분포함수를 구하여 stat_phyp에 저장
 stat_phyp <- phyper(x,m,n,k, lower.tail = TRUE)
 
-barplot(stat_phyp, names=0.5)
+barplot(stat_phyp, names=0:5)
 
 # 4. 난수로 이루어진 초기하분포 생성
 set.seed(0)
