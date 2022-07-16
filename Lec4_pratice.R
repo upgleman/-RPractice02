@@ -98,3 +98,11 @@ stat_rnor <- rnorm(100, mean=0, sd=1)
 
 print("난수 정규분포의 평균")
 mean(stat_rnor)
+
+#추가 - 특정함수 P에 해당하는 분위수 q의 값을 구하는 함수 : 누적분포함수의 역함수
+
+x2 <- seq(0, 1, by=0.05)
+
+stat_qnor <- qnorm(x2)
+
+plot(x2,stat_qnor)
