@@ -5,17 +5,21 @@ sales <- read.csv("sales.csv", header=TRUE)
 
 str(sales)
 # 월별 주문 빈도 차이 확인
-month_freq <- table(sales$order_month, sales$order_type)
+month_freq <- table(sales$order_month)
 
 print(month_freq)
 
 #판매액 현황 보고서 작성하기
 
 # 주문 데이터 읽어오기
-sales <- read.csv("sales.csv", header=TRUE)
+sales <- read.csv("sales.csv",stringsAsFactors = FALSE, header=TRUE)
 summary(sales)
 # 판매액 평균
-sales_mean <- mean(sales$order_sales)
+# sales_mean <- mean(sales$order_sales)
+
+View(sales)
+# 판매액 평균
+sales_mean <- round(mean(sales$order_sales), digits = -3)
 
 print(sales_mean)
 
@@ -32,6 +36,7 @@ sales_mode <- names(which.max(table(sales$order_sales)))
 
 print(sales_mode)
 
+# table(sales$order_sales)
 
 # 판매액 표준편차
 sales_std <- sd(sales$order_sales)
@@ -40,6 +45,7 @@ print(sales_std)
 
 
 # 판매액 30, 70 분위수
+
 q70 <- quantile(sales$order_sales, probs=c(0.30))
 q30 <- quantile(sales$order_sales, probs=c(0.70))
 
@@ -50,6 +56,7 @@ print(q30)
 library(gtools)
 
 # 주문 데이터 읽어오기
+
 sales <- read.csv("sales.csv", header=TRUE)
 summary(sales)
 
@@ -57,11 +64,14 @@ summary(sales)
 sugg1 <- permutations(length(sales$order_num), 2, v=sales$order_num, set=TRUE, repeats.allowed=TRUE)
 
 # print(sugg1) #실제 경우
-print(nrow(sugg1))
+
+# sales <- read.csv("sales.csv", header=TRUE)
+
 
 
 # 2안 : 경품 종류 동일, 응모자 기준 선발 / 조합
 sugg2 <- combinations(length(sales$order_num), 2, v=sales$order_num, set=TRUE, repeats.allowed=FALSE)
+
 
 print(nrow(sugg2))
 
@@ -73,6 +83,7 @@ print(nrow(sugg3))
 
 
 # 4안 : 설문조사 경품 종류 2가지, 응모자 기준 선발 / 순열
+
 sugg4 <- permutations(length(sales$order_num), 2, v=sales$order_num, set=TRUE, repeats.allowed=FALSE)
 
 print(nrow(sugg4))
